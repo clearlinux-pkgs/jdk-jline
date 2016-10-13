@@ -1,0 +1,29 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+apache-maven2
+jdk-cglib
+jdk-easymock3
+jdk-felix
+jdk-hamcrest
+jdk-hawtjni-project
+jdk-jansi
+jdk-jansi-native
+jdk-javassist
+jdk-junit4
+jdk-maven-bundle-plugin
+jdk-maven-compiler-plugin
+jdk-maven-filtering
+jdk-maven-jar-plugin
+jdk-maven-javadoc-plugin
+jdk-maven-resources-plugin
+jdk-maven-shared-incremental
+jdk-maven-shared-utils
+jdk-maven-site-plugin
+jdk-maven-source-plugin
+jdk-objenesis
+jdk-plexus-build-api
+jdk-plexus-compiler
+jdk-powermock
+jdk-sonatype-oss-parent
+jdk-surefire
+jdk-xbean

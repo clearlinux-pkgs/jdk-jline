@@ -1,0 +1,30 @@
+# Remove maven-shade-plugin usage
+python3 /usr/share/java-utils/pom_editor.py pom_remove_plugin  "org.apache.maven.plugins:maven-shade-plugin"
+
+# Remove animal sniffer plugin in order to reduce deps
+python3 /usr/share/java-utils/pom_editor.py pom_remove_plugin  "org.codehaus.mojo:animal-sniffer-maven-plugin"
+
+
+# Remove unavailable and unneeded deps
+python3 /usr/share/java-utils/pom_editor.py pom_xpath_remove   "pom:build/pom:extensions"
+
+python3 /usr/share/java-utils/pom_editor.py pom_xpath_remove   "pom:build/pom:pluginManagement/pom:plugins/pom:plugin[pom:artifactId = 'maven-site-plugin']"
+
+
+# Do not import non-existing internal package
+python3 /usr/share/java-utils/pom_editor.py pom_xpath_remove   "pom:build/pom:plugins/pom:plugin[pom:artifactId = 'maven-bundle-plugin']/pom:executions/pom:execution/pom:configuration/pom:instructions/pom:Import-Package"
+
+python3 /usr/share/java-utils/pom_editor.py pom_xpath_inject   "pom:build/pom:plugins/pom:plugin[pom:artifactId = 'maven-bundle-plugin']/pom:executions/pom:execution/pom:configuration/pom:instructions" "<Import-Package>javax.swing;resolution:=optional,org.fusesource.jansi,!org.fusesource.jansi.internal</Import-Package>"
+
+
+# Be sure to export jline.internal, but not org.fusesource.jansi.
+# See https://bugzilla.redhat.com/show_bug.cgi?id=1317551
+python3 /usr/share/java-utils/pom_editor.py pom_xpath_set      "pom:build/pom:plugins/pom:plugin[pom:artifactId = 'maven-bundle-plugin']/pom:executions/pom:execution/pom:configuration/pom:instructions/pom:Export-Package" "jline.*;-noimport:=true"
+
+
+# For some reason these directories do not exist, failing compilation due to -Werror
+mkdir -p target/generated-sources/annotations
+mkdir -p target/generated-test-sources/test-annotations
+
+# nondeterministic
+find -name TerminalFactoryTest.java -delete
