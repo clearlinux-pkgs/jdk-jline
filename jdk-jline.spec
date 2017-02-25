@@ -4,7 +4,7 @@
 #
 Name     : jdk-jline
 Version  : 2.13
-Release  : 3
+Release  : 4
 URL      : https://github.com/jline/jline2/archive/jline-2.13.tar.gz
 Source0  : https://github.com/jline/jline2/archive/jline-2.13.tar.gz
 Summary  : No detailed summary available
@@ -42,6 +42,7 @@ BuildRequires : jdk-eclipse-osgi-services
 BuildRequires : jdk-felix
 BuildRequires : jdk-felix-bundlerepository
 BuildRequires : jdk-felix-framework
+BuildRequires : jdk-felix-osgi-core
 BuildRequires : jdk-felix-osgi-foundation
 BuildRequires : jdk-felix-utils
 BuildRequires : jdk-glassfish-servlet-api
@@ -80,7 +81,6 @@ BuildRequires : jdk-maven-source-plugin
 BuildRequires : jdk-objectweb-asm
 BuildRequires : jdk-objenesis
 BuildRequires : jdk-osgi-compendium
-BuildRequires : jdk-osgi-core
 BuildRequires : jdk-parboiled
 BuildRequires : jdk-pegdown
 BuildRequires : jdk-plexus-archiver

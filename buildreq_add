@@ -4,6 +4,7 @@ apache-maven2
 jdk-cglib
 jdk-easymock3
 jdk-felix
+jdk-felix-osgi-core
 jdk-hamcrest
 jdk-hawtjni-project
 jdk-jansi
